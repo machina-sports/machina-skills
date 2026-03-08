@@ -1,6 +1,6 @@
 ---
 name: machina-secrets
-description: Manage and configure secure vault credentials for third-party API keys required by Machina connectors.
+description: Manage and configure secure vault credentials for third-party API keys required by Machina connectors. Trigger phrases: "add api key", "configure secrets", "set token", "vault".
 license: MIT
 metadata:
   triggers: ["add api key", "configure secrets", "set token", "vault"]
@@ -33,3 +33,15 @@ mcp__check_secrets({
     "name": "SPORTRADAR_API_KEY"
 })
 ```
+
+
+<validation_gate>
+Before setting a secret, ALWAYS verify if the secret is already configured by calling `mcp__check_secrets`. Do not overwrite existing secrets unless explicitly requested by the user.
+</validation_gate>
+
+<error_handling>
+If `mcp__create_secrets` fails:
+- Output an `<error>` block explaining the failure.
+- DO NOT log the raw API key in your text response.
+- Ask the user to verify their Pod connection.
+</error_handling>

@@ -1,6 +1,6 @@
 ---
 name: machina-constructor
-description: Construct and scaffold Machina agent-templates and connectors with correct YAML structure, then install them via MCP. Use when users ask to "create a template", "scaffold an agent", "init template", "build a new connector", "install template", "validate template", "analyze template", "trace agent", or "configure secrets".
+description: Construct and scaffold Machina agent-templates and connectors with correct YAML structure, then install them via MCP. Use when users ask to "create a template", "scaffold an agent", "init template", "build a new connector", "install template", "validate template", "analyze template", "trace agent", or "configure secrets". Trigger phrases: "create a template", "scaffold an agent", "init template", "build a new connector", "install template", "validate template", "analyze template", "trace agent", or "configure secrets".
 ---
 
 # Template Constructor
@@ -93,3 +93,11 @@ When the user encounters an error, unexpected scaffold output, or expresses frus
 - **Prompt files**: Use `prompts:` array (not `prompt:`) with `instruction:` (not `messages:`)
 - **Connector YAML**: Use `filetype:` (not `type:`) and `filename:` (not `script:`)
 - **Install order**: connectors → documents → prompts → mappings → workflows → agents → skills
+
+
+<error_handling>
+If any schema validation or template construction fails:
+- Output an `<error>` block detailing the exact YAML syntax error or missing field.
+- Suggest opening an issue using the links in the Feedback & Contributing section.
+- DO NOT silently ignore schema violations.
+</error_handling>

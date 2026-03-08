@@ -1,6 +1,6 @@
 ---
 name: machina-sports
-description: The official Machina Sports SDK for AI Agents. Access real-time sports data, odds, player stats, and build sports-focused AI agents.
+description: The official Machina Sports SDK for AI Agents. Access real-time sports data, odds, player stats, and build sports-focused AI agents. Trigger phrases: "sports", "odds", "stats", "nba", "nfl", "soccer", "machina".
 license: MIT
 metadata:
   triggers: ["sports", "odds", "stats", "nba", "nfl", "soccer", "machina"]
@@ -71,3 +71,14 @@ Diagnose system health.
 ## Examples
 > "Create a new research agent named 'Vision'."
 > "Run the 'odds-fetcher' workflow with the input 'Premier League'."
+
+
+<validation_gate>
+Before generating a custom agent or installing a template, verify the user has provided a valid name and role. Do not execute `./scripts/machina.sh` without the required arguments.
+</validation_gate>
+
+<error_handling>
+If `./scripts/machina.sh` returns an authentication or connection error:
+- Output an `<error>` block instructing the user to run `./scripts/machina.sh auth:login` to set up their credentials.
+- DO NOT hallucinate the sports data or agent creation.
+</error_handling>
